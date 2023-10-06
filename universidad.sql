@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-10-2023 a las 01:20:07
+-- Tiempo de generación: 06-10-2023 a las 22:20:16
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -44,7 +44,9 @@ CREATE TABLE `alumno` (
 
 INSERT INTO `alumno` (`idAlumno`, `dni`, `apellido`, `nombre`, `fechaDeNacimiento`, `estado`) VALUES
 (1, 1234, 'Lopez', 'Juan', '2000-05-31', 1),
-(2, 42239916, 'Veliz', 'Ivo', '1999-12-05', 1);
+(2, 42239916, 'Veliz', 'Ivo', '1999-12-05', 1),
+(6, 45502620, 'Rotta', 'Alejandro', '2005-02-09', 1),
+(7, 45202852, 'Cuk', 'Gonzalo', '2005-10-03', 1);
 
 -- --------------------------------------------------------
 
@@ -58,6 +60,17 @@ CREATE TABLE `inscripcion` (
   `idAlumno` int(11) NOT NULL,
   `idMateria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `inscripcion`
+--
+
+INSERT INTO `inscripcion` (`idInscripcion`, `nota`, `idAlumno`, `idMateria`) VALUES
+(1, 9, 7, 1),
+(2, 8, 2, 2),
+(3, 10, 6, 3),
+(4, 9, 6, 2),
+(5, 7, 7, 2);
 
 -- --------------------------------------------------------
 
@@ -73,6 +86,16 @@ CREATE TABLE `materia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Volcado de datos para la tabla `materia`
+--
+
+INSERT INTO `materia` (`idMateria`, `nombre`, `año`, `estado`) VALUES
+(1, 'Estructura De Datos', 2023, 1),
+(2, 'Laboratorio 1', 2023, 1),
+(3, 'Web 1', 2023, 1),
+(4, 'Laboratorio 2', 2024, 1);
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -80,7 +103,8 @@ CREATE TABLE `materia` (
 -- Indices de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  ADD PRIMARY KEY (`idAlumno`);
+  ADD PRIMARY KEY (`idAlumno`),
+  ADD UNIQUE KEY `dni` (`dni`);
 
 --
 -- Indices de la tabla `inscripcion`
@@ -104,19 +128,19 @@ ALTER TABLE `materia`
 -- AUTO_INCREMENT de la tabla `alumno`
 --
 ALTER TABLE `alumno`
-  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idAlumno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `inscripcion`
 --
 ALTER TABLE `inscripcion`
-  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idInscripcion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `materia`
 --
 ALTER TABLE `materia`
-  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idMateria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas

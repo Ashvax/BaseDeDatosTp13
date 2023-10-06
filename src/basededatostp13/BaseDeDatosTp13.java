@@ -176,7 +176,7 @@ public class BaseDeDatosTp13 {
         }
     }
 }*/
-      /* try {
+       /*try {
             //Cargo Driver de conexión
             Class.forName("org.mariadb.jdbc.Driver");
             //Establecer la conexión 
@@ -184,6 +184,7 @@ public class BaseDeDatosTp13 {
             String usuario="root";
             String password="";
             Connection con=DriverManager.getConnection(URL,usuario,password);
+    //Alumnos Con Notas Superiores A 8.
     String consultaListado = "SELECT * FROM inscripcion WHERE nota > 8";
     PreparedStatement psListado = con.prepareStatement(consultaListado);
     ResultSet resultado = psListado.executeQuery();
@@ -210,7 +211,7 @@ public class BaseDeDatosTp13 {
 }
 }
 }*/
-        try {
+        /*try {
         //Cargo Driver de conexión
         Class.forName("org.mariadb.jdbc.Driver");
         //Establecer la conexión 
@@ -240,4 +241,4 @@ public class BaseDeDatosTp13 {
     e.printStackTrace();
 }
     }
-}
+}*/
