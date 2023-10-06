@@ -176,7 +176,7 @@ public class BaseDeDatosTp13 {
         }
     }
 }*/
-       try {
+      /* try {
             //Cargo Driver de conexión
             Class.forName("org.mariadb.jdbc.Driver");
             //Establecer la conexión 
@@ -203,6 +203,35 @@ public class BaseDeDatosTp13 {
     resultado.close();
     psListado.close();
 
+    // Cerrar la conexión
+    con.close();
+} catch (Exception e) {
+    e.printStackTrace();
+}
+}
+}*/
+        try {
+        //Cargo Driver de conexión
+        Class.forName("org.mariadb.jdbc.Driver");
+        //Establecer la conexión 
+        String URL="jdbc:mariadb://localhost:3306/universidad";
+        String usuario="root";
+        String password="";
+        Connection con=DriverManager.getConnection(URL,usuario,password);
+            String sql = "DELETE FROM inscripcion WHERE idAlumno = ? AND idMateria = ?";
+    PreparedStatement psDesinscripcion = con.prepareStatement(sql);
+    psDesinscripcion.setInt(1, 2); // Reemplaza con el ID del alumno
+    psDesinscripcion.setInt(2, 1); // Reemplaza con el ID de la materia
+
+    int filasAfectadas = psDesinscripcion.executeUpdate();
+    if (filasAfectadas > 0) {
+        System.out.println("El alumno ha sido desinscrito de la materia.");
+    } else {
+        System.out.println("El alumno no estaba inscrito en la materia.");
+    }
+
+    psDesinscripcion.close();
+
     // ... (código para manejar excepciones)
 
     // Cerrar la conexión
@@ -210,5 +239,5 @@ public class BaseDeDatosTp13 {
 } catch (Exception e) {
     e.printStackTrace();
 }
-}
+    }
 }
