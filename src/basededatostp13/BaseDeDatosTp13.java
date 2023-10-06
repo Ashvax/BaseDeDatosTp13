@@ -85,7 +85,7 @@ public class BaseDeDatosTp13 {
     }
     } */
 
-    try {
+    /*try {
     // Cargo Driver de conexión
     Class.forName("org.mariadb.jdbc.Driver");
     // Establecer la conexión
@@ -99,9 +99,9 @@ public class BaseDeDatosTp13 {
     PreparedStatement ps = con.prepareStatement(sql);
     
     // Establecer los valores de los parámetros
-    ps.setDouble(1, 6.5); // Nota del alumno
-    ps.setInt(2, 7); // ID Del alumno
-    ps.setInt(3, 2); // Id de la materia 
+    ps.setDouble(1, 7.5); // Nota del alumno
+    ps.setInt(2, 2); // ID Del alumno
+    ps.setInt(3, 1); // Id de la materia 
     
     int filas = ps.executeUpdate();
     if (filas > 0) {
