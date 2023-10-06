@@ -185,21 +185,28 @@ public class BaseDeDatosTp13 {
             String password="";
             Connection con=DriverManager.getConnection(URL,usuario,password);
     //Alumnos Con Notas Superiores A 8.
-    String consultaListado = "SELECT * FROM inscripcion WHERE nota > 8";
+    String consultaListado = "SELECT alumno.idAlumno, alumno.dni, alumno.apellido, alumno.nombre, inscripcion.nota " +
+        "FROM alumno " +
+        "INNER JOIN inscripcion ON alumno.idAlumno = inscripcion.idAlumno " +
+        "WHERE inscripcion.nota > 8";
     PreparedStatement psListado = con.prepareStatement(consultaListado);
     ResultSet resultado = psListado.executeQuery();
 
     // Procesar y mostrar los resultados
-    while (resultado.next()) {
-        double nota = resultado.getDouble("nota");
-        int idAlumno = resultado.getInt("IdAlumno");
-        int idMateria = resultado.getInt("IdMateria");
+             while (resultado.next()) {
+                int idAlumno = resultado.getInt("idAlumno");
+                int dni = resultado.getInt("dni");
+                String apellido = resultado.getString("apellido");
+                String nombre = resultado.getString("nombre");
+                double nota = resultado.getDouble("nota");
 
-        System.out.println("Nota: " + nota);
-        System.out.println("ID de Alumno: " + idAlumno);
-        System.out.println("ID de Materia: " + idMateria);
-        System.out.println("-------------------");
-    }
+                System.out.println("ID de Alumno: " + idAlumno);
+                System.out.println("DNI: " + dni);
+                System.out.println("Apellido: " + apellido);
+                System.out.println("Nombre: " + nombre);
+                System.out.println("Nota: " + nota);
+                System.out.println("-------------------");
+            }
 
     resultado.close();
     psListado.close();
