@@ -176,7 +176,7 @@ public class BaseDeDatosTp13 {
         }
     }
 }*/
-       /*try {
+       try {
             //Cargo Driver de conexión
             Class.forName("org.mariadb.jdbc.Driver");
             //Establecer la conexión 
@@ -210,7 +210,7 @@ public class BaseDeDatosTp13 {
     e.printStackTrace();
 }
 }
-}*/
+}
         /*try {
         //Cargo Driver de conexión
         Class.forName("org.mariadb.jdbc.Driver");
@@ -239,6 +239,8 @@ public class BaseDeDatosTp13 {
     con.close();
 } catch (Exception e) {
     e.printStackTrace();
+}
+    }
 }
     }
 }*/
