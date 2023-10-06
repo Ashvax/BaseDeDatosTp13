@@ -176,3 +176,39 @@ public class BaseDeDatosTp13 {
         }
     }
 }*/
+       try {
+            //Cargo Driver de conexión
+            Class.forName("org.mariadb.jdbc.Driver");
+            //Establecer la conexión 
+            String URL="jdbc:mariadb://localhost:3306/universidad";
+            String usuario="root";
+            String password="";
+            Connection con=DriverManager.getConnection(URL,usuario,password);
+    String consultaListado = "SELECT * FROM inscripcion WHERE nota > 8";
+    PreparedStatement psListado = con.prepareStatement(consultaListado);
+    ResultSet resultado = psListado.executeQuery();
+
+    // Procesar y mostrar los resultados
+    while (resultado.next()) {
+        double nota = resultado.getDouble("nota");
+        int idAlumno = resultado.getInt("IdAlumno");
+        int idMateria = resultado.getInt("IdMateria");
+
+        System.out.println("Nota: " + nota);
+        System.out.println("ID de Alumno: " + idAlumno);
+        System.out.println("ID de Materia: " + idMateria);
+        System.out.println("-------------------");
+    }
+
+    resultado.close();
+    psListado.close();
+
+    // ... (código para manejar excepciones)
+
+    // Cerrar la conexión
+    con.close();
+} catch (Exception e) {
+    e.printStackTrace();
+}
+}
+}
