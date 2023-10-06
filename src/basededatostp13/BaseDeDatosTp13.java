@@ -85,7 +85,7 @@ public class BaseDeDatosTp13 {
     }
     } */
 
-    /*try {
+    try {
     // Cargo Driver de conexión
     Class.forName("org.mariadb.jdbc.Driver");
     // Establecer la conexión
@@ -94,14 +94,14 @@ public class BaseDeDatosTp13 {
     String password = "";
     Connection con = DriverManager.getConnection(URL, usuario, password);
     
-    // Dar alta a una materia (Insert)
+    // Inscribir Alumnos a Materias (Insert)
     String sql = "INSERT INTO inscripcion (nota, idAlumno, idMateria) VALUES (?, ?, ?)";
     PreparedStatement ps = con.prepareStatement(sql);
     
     // Establecer los valores de los parámetros
-    ps.setDouble(1, 9.5); // Nota del alumno
-    ps.setInt(2, 6); // ID Del alumno
-    ps.setInt(3, 3); // Id de la materia 
+    ps.setDouble(1, 6.5); // Nota del alumno
+    ps.setInt(2, 7); // ID Del alumno
+    ps.setInt(3, 2); // Id de la materia 
     
     int filas = ps.executeUpdate();
     if (filas > 0) {
@@ -133,8 +133,8 @@ public class BaseDeDatosTp13 {
             String usuario="root";
             String password="";
             Connection con=DriverManager.getConnection(URL,usuario,password);
- 
-//Obtener los datos de los alumnos activos.
+    
+        //Obtener los datos de los alumnos activos.
              String sql="SELECT * FROM alumno WHERE estado=true";
              PreparedStatement ps=con.prepareStatement(sql);
              ResultSet rs=ps.executeQuery();
